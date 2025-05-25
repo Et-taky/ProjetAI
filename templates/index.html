@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prédiction du Cancer du Sein</title>
+    <style>
+        form{
+            text-align: center;
+            
+        }
+        h2{
+            text-align: center;
+        }
+        .parts-container {
+            width: 80%;
+            display: flex;
+            padding: 50px;
+            flex-wrap: nowrap;
+            outline: 2px #333 solid ;
+            border-radius: 8px;
+            margin: auto;
+            margin-bottom: 10px;
+        }
+        .part {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            gap: 15px;
+        }
+
+        select,
+        input {
+            width: 150px;
+            outline: none;
+            border: 2px lightgrey solid;
+            height: 20px;
+        }
+        input[type="submit"]{
+            background-color: blue;
+            font-weight: bold;
+            height: 24px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Entrer les infos de tumeur:</h2>
+    <form method="POST" action="/predict">
+        <div class="parts-container">
+            <div class="part">
+                {% for feature in features[:6] %}
+                <div>
+
+                    <label>{{ feature }}: </label>
+                    <input type="number" step="any" name="{{ feature }}" required><br>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="part">
+                {% for feature in features[6:] %}
+                <div>
+                    <label>{{ feature }}: </label>
+                    <input type="number" step="any" name="{{ feature }}" required><br>
+                </div>
+                {% endfor %}
+                <div>
+                    <label>Sélectionnez le Modèle:</label>
+                <select name="model">
+                    {% for model in models %}
+                    <option value="{{ model }}">{{ model }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+            </div>
+        </div>
+
+        <input type="submit" value="Prédire">
+    </form>
+</body>
+
+</html>

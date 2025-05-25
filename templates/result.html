@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Résultat</title>
+    <style>
+        .bdy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .bdy div {
+            width: 400px;
+            height: 250px;
+            border: #333 2px solid;
+            border-radius: 8px;
+            margin: auto;
+            padding: 20px 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="bdy">
+    <div>
+        <h2>Modèle: {{ model }}</h2>
+        {% if result=="Benign" %}
+        <h3>Prédiction: <span style="color:green">Bénigne</span></h3>
+        {% else %}
+        <h3>Prédiction: <span style="color:red">Maligne</span></h3>
+        {% endif %}
+        <a href="/">Retourne à l'acceuil</a>
+    </div>
+</body>
+
+</html>
