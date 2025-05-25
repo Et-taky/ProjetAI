@@ -7,7 +7,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 import joblib
-import os
 
 # téléchargement du dataset
 df = pd.read_csv("data.csv")  
@@ -44,7 +43,7 @@ knn.fit(X_train, y_train)
 tree.fit(X_train, y_train)
 
 # Create 'models' folder if it doesn't exist
-os.makedirs("models", exist_ok=True)
+# os.makedirs("models", exist_ok=True)
 
 # Save models and scaler
 joblib.dump(log_reg, 'models/log_reg.pkl')
